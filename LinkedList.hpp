@@ -25,8 +25,8 @@ public:
 	}
 	LinkedList(T* items, int count)
 	{
-		//if (count < 0)
-		//	throw std::exception("The size cannot be < 0");
+		if (count < 0)
+			throw std::exception("The size cannot be < 0");
 		this->size = count;
 		this->head = nullptr;
 		T ptemp;
@@ -60,8 +60,8 @@ public:
 public:
 	T& operator[](const int index)
 	{
-		//if (index < 0 || index >= this->size)
-			//throw std::exception("undefined index");
+		if (index < 0 || index >= this->size)
+			throw std::exception("undefined index");
 		int count = 0;
 		Node<T>* temp = this->head;
 		while (temp != nullptr)
@@ -77,8 +77,8 @@ public:
 	T Get(const int index)
 	{
 
-		//if (index < 0 || index >= this->size)
-			//throw std::exception("undefined index");
+		if (index < 0 || index >= this->size)
+			throw std::exception("undefined index");
 		int count = 0;
 		Node<T>* temp = this->head;
 		while (temp != nullptr)
@@ -125,26 +125,26 @@ public:
 		this->head = new Node<T>(data, head);
 		this->size++;
 	}
-	void InsertAt(T data, const int index)
+	void InsertAt(const int index, T data)
 	{
-		//if (index < 0 || index >= this->size)
-		//	throw std::exception("undefined index ");
+		if (index < 0 || index >= this->size)
+			throw std::exception("undefined index ");
+		Node<T>* last = this->head;
 		if (index == 0)
 		{
-			Apend(data);
+			this->head = new Node<T>(data, head);
 		}
 		else
 		{
-			Node<T>* last = this->head;
 
-			for (size_t i = 0; i < index - 1; i++)
+			for (size_t i = 0; i < index - 1 ; i++)
 			{
 				last = last->next;
 			}
-			Node<T>* newNode = new  Node<T>(data, last->next);
+			Node<T>* newNode = new  Node<T>(data, (last->next)->next);
 			last->next = newNode;
 		}
-		this->size++;
+		//this->size++;
 	}
 	void PopFront()
 	{
@@ -160,8 +160,8 @@ public:
 	}
 	void Remove(const int index)
 	{
-		//if (index < 0 || index >= this->size)
-			//throw std::exception("undefined index ");
+		if (index < 0 || index >= this->size)
+			throw std::exception("undefined index ");
 		if (index == 0)
 		{
 			PopFront();
@@ -183,8 +183,8 @@ public:
 	}
 	LinkedList<T>* GetSubList(int startIndex, int endIndex)
 	{
-		//if (startIndex >= this->size || endIndex >= this->size)
-			//throw std::exception("undefined index");
+		if (startIndex >= this->size || endIndex >= this->size)
+			throw std::exception("undefined index");
 		T* arrtemp = new T[endIndex - startIndex + 1];
 		LinkedList<T>* Sublist;
 		Sublist = new LinkedList<T>();
