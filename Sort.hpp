@@ -69,17 +69,7 @@ Sequence<T>* ShellSort(Sequence<T>* mas, int length) {
 		d = d / 2;
 		
 	}
-	/*int step, i, j,count;
-	for (step = length / 2; step > 0; step /= 2)
-		for (i = step; i < length; i++) {
 
-			for (j = i - step; j >= 0; j -= step) {
-				count = mas->Get(j);
-				mas->InsertAt(j, mas->Get(j + step));
-				mas->InsertAt(j + step, count);
-			}
-		}
-		*/
 	return mas;
 }
 template <typename T>
