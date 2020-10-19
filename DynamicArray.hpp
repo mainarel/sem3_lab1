@@ -1,6 +1,4 @@
 #pragma once 
-#include <stdexcept>
-#include <exception>
 #include <iostream>
 template <class T>
 class DynamicArray
@@ -12,7 +10,7 @@ public:
 	DynamicArray(T* items, const int size)
 	{
 		if (size < 0)
-			throw std::exception("The size cannot be < 0");
+			throw std::out_of_range("The size cannot be < 0");
 		this->arr = new T[size];
 		this->size = size;
 		for (size_t i = 0; i < size; i++)
@@ -24,7 +22,7 @@ public:
 	DynamicArray(const int size)
 	{
 		if (size < 0)
-			throw std::exception("The size cannot be < 0");
+			throw std::out_of_range("The size cannot be < 0");
 		this->arr = new T[size];
 		this->size = size;
 		for (size_t i = 0; i < size; i++)
@@ -52,21 +50,21 @@ public:
 	T Get(const int index)
 	{
 		if (index < 0 || index >= this->size)
-			throw std::exception("Iundefined index  ");
+		throw std::out_of_range("Iundefined index  ");
 		return this->arr[index];
 	}
 
 	void Set(const int index, const T value)
 	{
 		if (index < 0 || index >= this->size)
-			throw std::exception("Iundefined index ");
+			throw std::out_of_range("Iundefined index ");
 		this->arr[index] = value;
 	}
 
 	void Resize(int newsize)
 	{
 		if (newsize < 0)
-			throw std::exception("The size cannot be < 0 ");
+			throw std::out_of_range("The size cannot be < 0 ");
 		T* arrtemp = new T[newsize];
 		if (newsize <= this->size)
 		{

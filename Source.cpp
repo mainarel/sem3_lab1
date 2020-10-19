@@ -3,40 +3,32 @@
 #include "Sort.hpp"
 #include<iostream>
 using namespace std;
-
-
-void Print(Sequence<int>* ar,const int& length){
+void Print(Sequence<int>* ar, const int& length){
 	cout << "It is your sequence: " << endl;
 	for (size_t i = 0; i < length; i++) {
 		cout << ar->Get(i) << " ";
 	}
 	cout << endl;
 }
-
-
 template <typename T>
-Sequence<T>* testQuickSort(Sequence<T>* ar,int length) {
+Sequence<T>* testQuickSort(Sequence<T>* ar, const int& length) {
 	cout << "TESTS QUICKSORT:" << endl;
 	QuickSort1(ar, 0, length-1 ); 
 	return ar;
 }
-
 template <typename T>
-Sequence<T>* testShellSort(Sequence<T>* ar, int length) {
+Sequence<T>* testShellSort(Sequence<T>* ar, const int& length) {
 	cout << "TESTS SHELLSORT: " << endl;
 	ShellSort(ar, length);
 	return ar;
 }
-
 template <typename T>
-Sequence<T>* testShakerSort(Sequence<T>* ar, int length) {
+Sequence<T>* testShakerSort(Sequence<T>* ar, const int& length) {
 	cout << "TESTS SHAKERSORT: " << endl;
 	ShakerSort(ar, length);
 	return ar;
 }
-
-
-ArraySequence<int>* createArray(const int length) {
+ArraySequence<int>* createArray(const int& length) {
 	int choose_input;
 	cout << "How do you want to fill the sequence? " << endl << "1. By hand" << endl << "2. Random" << endl;
 	ArraySequence<int>* array;
@@ -63,8 +55,7 @@ ArraySequence<int>* createArray(const int length) {
 	}
 	return array;
 }
-
-ListSequence<int>* createList(const int length) {
+ListSequence<int>* createList(const int& length) {
 	int choose_input;
 	cout << "How do you want to fill the sequence? " << endl << "1. By hand" << endl << "2. Random" << endl;
 	ListSequence<int>* list;
@@ -89,9 +80,7 @@ ListSequence<int>* createList(const int length) {
 	}
 	return list;
 }
-
-
-void TestArraySequence (ArraySequence<int>* arr,const int length) {
+void TestArraySequence (ArraySequence<int>* arr, const int& length) {
 	
 	Print(arr, length);
 	cout << "Choose the type of sort:" << endl <<
@@ -112,11 +101,8 @@ void TestArraySequence (ArraySequence<int>* arr,const int length) {
 		Print(arr, length);
 		break;
 	}
-
-
-	
 }
-void TestListSequence(ListSequence<int>* list, const int length) {
+void TestListSequence(ListSequence<int>* list, const int& length) {
 
 	Print(list, length);
 	cout << "Choose the type of sort:" << endl <<
@@ -139,15 +125,7 @@ void TestListSequence(ListSequence<int>* list, const int length) {
 		Print(list, length);
 		break;
 	}
-	
-	
-
 }
-
-
-
-
-
 int main() {
 	int length,g;
 
@@ -166,13 +144,9 @@ int main() {
 	case 1:
 		TestArraySequence(createArray(length),length);
 		break;
-
-
 	case 2:
 		TestListSequence(createList(length),length);
 		break;
-
 	}
-
 	return 0;
  }

@@ -24,11 +24,11 @@ public:
 	};
 	ListSequence(const ListSequence<T>& other)
 	{
-		this.count = other.count;
-		this.items = new LinkedList<T>(other.GetLength());
+		this->count = other.count;
+		this->items = new LinkedList<T>(other.GetLength());
 		for (size_t i = 0; i < other.GetLength(); i++)
 		{
-			this.Prepend(other.Get(i));
+			this->Prepend(other.Get(i));
 		}
 
 	};
@@ -48,7 +48,7 @@ public:
 	virtual T Get(const int index) const override
 	{
 		if (index < 0 || index >= this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		return this->items->Get(index);
 	}
 public:
@@ -84,7 +84,7 @@ public:
 	virtual void RemoveAt(const int index)  override
 	{
 		if (index < 0 || index >= this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		this->items->Remove(index);
 		this->count--;
 	}
@@ -106,7 +106,7 @@ public:
 	virtual Sequence<T>* GetSubsequence(const int begin, const int end)  const override
 	{
 		if (begin >= this->count || end >= this->count)
-			throw std::exception("undefined index ");
+			throw std::out_of_range("undefined index ");
 		ListSequence<T>* itemsSub;
 		itemsSub = new ListSequence<T>();
 
@@ -151,7 +151,7 @@ public:
 	virtual Sequence<T>* CopyTo(Sequence<T>* target, int beginIndex)  override
 	{
 		if (beginIndex < 0)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		ListSequence<T>* itemstemp;
 		itemstemp = new ListSequence<T>();
 		for (size_t i = beginIndex; i < target->GetLength(); i++)

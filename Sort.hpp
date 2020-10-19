@@ -3,7 +3,7 @@
 #include <chrono>
 
 template<typename T>
-void time_sort(Sequence<T>* mas, int choice_sort) {
+void time_sort(Sequence<T>* mas, const int& choice_sort) {
 
 	auto start = std::chrono::high_resolution_clock::now();
 	if (choice_sort == 1)  QuickSort1(mas, 0, mas->GetLength()-2);
@@ -18,7 +18,7 @@ void time_sort(Sequence<T>* mas, int choice_sort) {
 
 
 template <typename T>
-Sequence<T>* QuickSort1(Sequence<T>* mas, int first, int last) { 
+Sequence<T>* QuickSort1(Sequence<T>* mas, const int& first, const int& last) {
 	//if (last + 1 == 0) return mas;
 		T index;
 		int mid, count;
@@ -49,7 +49,7 @@ Sequence<T>* QuickSort1(Sequence<T>* mas, int first, int last) {
 
 
 template <typename T>
-Sequence<T>* ShellSort(Sequence<T>* mas, int length) {
+Sequence<T>* ShellSort(Sequence<T>* mas, const int& length) {
 	int i, j, d, count;
 	d = length;
 	d = d / 2;
@@ -73,7 +73,7 @@ Sequence<T>* ShellSort(Sequence<T>* mas, int length) {
 	return mas;
 }
 template <typename T>
-Sequence<T>* ShakerSort(Sequence<T>* mas, int length) {
+Sequence<T>* ShakerSort(Sequence<T>* mas, const int& length) {
 	int left = 0, right = length - 1; // левая и правая границы сортируемой области массива
 	int flag = 1;  // флаг наличия перемещений
 	// Выполнение цикла пока левая граница не сомкнётся с правой

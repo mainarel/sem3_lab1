@@ -56,13 +56,13 @@ public:
 	virtual T Get(const int index) const override
 	{
 		if (index < 0 || index >= this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		return this->items->Get(index);
 	}
 	virtual Sequence<T>* GetSubsequence(const int start, const int end)  const override
 	{
 		if (start < 0 || start >= this->count || end < 0 || end >= this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		ArraySequence<T>* SubItems;
 		SubItems = new ArraySequence<T>(end - start + 1);
 		size_t j = 0;
@@ -116,7 +116,7 @@ public:
 	virtual void RemoveAt(int index)  override
 	{
 		if (index < 0 || index >= this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		DynamicArray<T>* itemstemp;
 		itemstemp = new DynamicArray<T>(this->count - 1);
 		for (size_t i = 0; i < index; i++)
@@ -186,7 +186,7 @@ public:
 	virtual Sequence<T>* CopyTo(Sequence<T>* target, int startIndex)  override
 	{
 		if (startIndex < 0 || startIndex > this->count)
-			throw std::exception("undefined index");
+			throw std::out_of_range("undefined index");
 		ArraySequence<T>* copyitems;
 		copyitems = new ArraySequence<T>(target->GetLength() - startIndex + 1);
 		int j = 0;
