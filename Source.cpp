@@ -2,31 +2,34 @@
 #include "ListSequence.hpp"
 #include "Sort.hpp"
 #include<iostream>
+
 using namespace std;
-void Print(Sequence<int>* ar, const int& length){
+
+void Print(Sequence<int>* seq, const int& length){
 	cout << "It is your sequence: " << endl;
 	for (size_t i = 0; i < length; i++) {
-		cout << ar->Get(i) << " ";
+		cout << seq->Get(i) << " ";
 	}
 	cout << endl;
 }
+
 template <typename T>
-Sequence<T>* testQuickSort(Sequence<T>* ar, const int& length) {
+Sequence<T>* testQuickSort(Sequence<T>* seq, const int& length) {
 	cout << "TESTS QUICKSORT:" << endl;
-	QuickSort1(ar, 0, length-1 ); 
-	return ar;
+	QuickSort1(seq, 0, length-1 );
+	return seq;
 }
 template <typename T>
-Sequence<T>* testShellSort(Sequence<T>* ar, const int& length) {
+Sequence<T>* testShellSort(Sequence<T>* seq, const int& length) {
 	cout << "TESTS SHELLSORT: " << endl;
-	ShellSort(ar, length);
-	return ar;
+	ShellSort(seq, length);
+	return seq;
 }
 template <typename T>
-Sequence<T>* testShakerSort(Sequence<T>* ar, const int& length) {
+Sequence<T>* testShakerSort(Sequence<T>* seq, const int& length) {
 	cout << "TESTS SHAKERSORT: " << endl;
-	ShakerSort(ar, length);
-	return ar;
+	ShakerSort(seq, length);
+	return seq;
 }
 ArraySequence<int>* createArray(const int& length) {
 	int choose_input;
@@ -89,15 +92,17 @@ void TestArraySequence (ArraySequence<int>* arr, const int& length) {
 	cin >> g;
 	switch (g) {
 	case 1: 
-		time_sort(arr, g);
+		time_sort(arr, g,length);
 		Print(arr, length); 
 		break; 
 	
-	case 2: testShellSort(arr,length);
+	case 2: 
+		time_sort(arr,g,length);
 		Print(arr, length);
 		break;
 
-	case 3: time_sort(arr, g);
+	case 3: 
+		time_sort(arr, g,length);
 		Print(arr, length);
 		break;
 	}
@@ -111,42 +116,47 @@ void TestListSequence(ListSequence<int>* list, const int& length) {
 	cin >> g;
 	switch (g) {
 	case 1:
-		time_sort(list, g);
+		time_sort(list, g, length);
 		Print(list, length);
 		break;
 
 	case 2:
-		time_sort(list, g);
+		time_sort(list, g, length);
 		Print(list, length);
 		break;
 
 	case 3: 
-		time_sort(list, g);
+		time_sort(list, g, length);
 		Print(list, length);
 		break;
 	}
 }
-int main() {
-	int length,g;
 
+void Test() {
+	int length, g;
 	cout << "Write the length of sequence:" << endl;
 	cin >> length;
 	if (length < 0) {
 		cout << "The length cannot be negative" << endl;
-		return -1;
+		exit;
 	}
-	
+
 	cout << "What do you want to use for sort?" << endl
 		<< "1. ArraySequence" << endl << "2. ListSequence" << endl;
 	cin >> g;
 	switch (g) {
 
 	case 1:
-		TestArraySequence(createArray(length),length);
-		break;
+		TestArraySequence(createArray(length), length);
+		//Test();
 	case 2:
-		TestListSequence(createList(length),length);
-		break;
+		TestListSequence(createList(length), length);
+		//break;
 	}
+}
+
+
+int main() {
+	Test();
 	return 0;
  }

@@ -74,6 +74,12 @@ public:
 		return SubItems;
 	}
 public:
+	virtual void Set(int index, T value) override {
+
+		//this->count++;
+		//this->items->Resize(GetLength() + 1);
+		this->items->Set(index, value);
+	};
 	virtual void Append(T const value)  override
 	{
 		this->count++;

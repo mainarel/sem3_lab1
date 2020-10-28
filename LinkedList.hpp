@@ -103,6 +103,13 @@ public:
 	{
 		return this->size;
 	}
+	void Set(int index, T data) {
+		Node<T>* temp = this->head;
+		for (int i = 0; i < index; i++) {
+			temp = temp->next;
+		}
+		temp->data = data;
+	}
 	void Prepend(T data)
 	{
 		if (head == nullptr)

@@ -52,6 +52,9 @@ public:
 		return this->items->Get(index);
 	}
 public:
+	virtual void Set(int index, T value) override {
+		this->items->Set(index, value);
+	}
 	virtual void Append(T const value)  override
 	{
 		this->items->Apend(value);
