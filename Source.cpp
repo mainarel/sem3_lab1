@@ -31,6 +31,7 @@ Sequence<T>* testShakerSort(Sequence<T>* seq, const int& length) {
 	ShakerSort(seq, length);
 	return seq;
 }
+
 ArraySequence<int>* createArray(const int& length) {
 	int choose_input;
 	cout << "How do you want to fill the sequence? " << endl << "1. By hand" << endl << "2. Random" << endl;
@@ -73,8 +74,8 @@ ListSequence<int>* createList(const int& length) {
 			list->Prepend(value);
 		}
 		break;
-	case 2:
 
+	case 2:
 		for (size_t i = 0; i < length; i++)
 		{
 			list->Prepend(rand());
@@ -83,28 +84,29 @@ ListSequence<int>* createList(const int& length) {
 	}
 	return list;
 }
+
 void TestArraySequence (ArraySequence<int>* arr, const int& length) {
-	
 	Print(arr, length);
 	cout << "Choose the type of sort:" << endl <<
 		"1. QuickSort" << endl << "2. ShellSort" << endl << "3. ShakerSort" << endl;
 	int g;
 	cin >> g;
 	switch (g) {
-	case 1: 
-		time_sort(arr, g,length);
-		Print(arr, length); 
-		break; 
-	
-	case 2: 
-		time_sort(arr,g,length);
+	case 1:
+		time_sort(arr, g, length);
 		Print(arr, length);
 		break;
 
-	case 3: 
-		time_sort(arr, g,length);
+	case 2:
+		time_sort(arr, g, length);
 		Print(arr, length);
 		break;
+
+	case 3:
+		time_sort(arr, g, length);
+		Print(arr, length);
+		break;
+
 	}
 }
 void TestListSequence(ListSequence<int>* list, const int& length) {
@@ -142,16 +144,19 @@ void Test() {
 	}
 
 	cout << "What do you want to use for sort?" << endl
-		<< "1. ArraySequence" << endl << "2. ListSequence" << endl;
+		<< "1. ArraySequence" << endl << "2. ListSequence" << endl << "3. Exit" << endl;
 	cin >> g;
 	switch (g) {
 
 	case 1:
 		TestArraySequence(createArray(length), length);
+		break;
 		//Test();
 	case 2:
 		TestListSequence(createList(length), length);
-		//break;
+		break;
+	case 3: 
+		break;
 	}
 }
 
