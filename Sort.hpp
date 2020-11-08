@@ -1,6 +1,7 @@
 #include "ArraySequence.hpp"
 #include "ListSequence.hpp"
 #include <chrono>
+#include <string>
 
 template<typename T>
 void time_sort(Sequence<T>* seq, const int& choice_sort, const int& length) {
@@ -26,14 +27,13 @@ void Swap(Sequence<T>* seq, const int& index1, const int& index2)
 template <typename T>
 Sequence<T>* QuickSort1(Sequence<T>* seq, const int& first, const int& last) {
 	if (last + 1 == 0) return seq;
-		T index;
-		int mid, count;
+		T middle;
 		int f = first, l = last;
-		mid = seq->Get((l + f) / 2); //вычисление опорного элемента 
+		middle = seq->Get((l + f) / 2); //вычисление опорного элемента 
 		do
 		{
-			while (seq->Get(f) < mid) f++;
-			while (seq->Get(l) > mid) l--;
+			while (seq->Get(f) < middle) f++;
+			while (seq->Get(l) > middle) l--;
 			if (f <= l) 
 			{
 				Swap(seq,l,f);
@@ -47,11 +47,9 @@ Sequence<T>* QuickSort1(Sequence<T>* seq, const int& first, const int& last) {
 	}
 
 
-
-
 template <typename T>
 Sequence<T>* ShellSort(Sequence<T>* seq, const int& length) {
-	int i, j, d, count;
+	int i, j, d;
 	d = length;
 	d = d / 2;
 	while (d > 0)
