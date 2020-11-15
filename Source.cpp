@@ -41,7 +41,7 @@ void Print(Sequence<T>* seq, const int& length){
 Sequence<int>* createSequence(const int& length) {
 	int type_Seq, type_Fill;
 	cout << "What do you want to use for sort?" << endl
-		<< "1. ArraySequence" << endl << "2. ListSequence" << endl << "3. Exit" << endl;
+		<<"1. ArraySequence" << endl << "2. ListSequence" << endl << "3. Exit" << endl;
 	cin >> type_Seq;
 	cout << "How do you want to fill the sequence? " << endl << "1. By hand" << endl << "2. Random" << endl;
 	cin >> type_Fill;
@@ -222,8 +222,9 @@ void Test() {
 		cout << "The length cannot be negative" << endl;
 		exit;
 	}
-
-	TestSequence(createSequence(length),length);
+	while (true) {
+		TestSequence(createSequence(length), length);
+	}
 }
 
 
